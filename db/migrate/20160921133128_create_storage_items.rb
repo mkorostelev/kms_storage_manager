@@ -5,7 +5,7 @@ class CreateStorageItems < ActiveRecord::Migration[5.0]
 
       t.references :product
 
-      t.integer :quantity
+      t.integer :quantity, default: 0
 
       t.timestamps null: false
     end

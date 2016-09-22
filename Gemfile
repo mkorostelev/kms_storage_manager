@@ -11,7 +11,7 @@ gem 'faker'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
-# gem 'redis', '~> 3.0'
+gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -24,6 +24,7 @@ gem 'faker'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
+  gem 'rspec-rails'
 end
 
 group :development do
@@ -35,3 +36,22 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+#####################
+group :test do
+  gem 'shoulda-matchers'
+  gem 'shoulda-callback-matchers'
+  gem 'rspec-activemodel-mocks'
+  gem 'rspec-its'
+  gem 'rails-controller-testing'
+  gem 'email_spec'
+end
+
+gem 'email_validator'
+gem 'simplecov', :require => false, :group => :test
+gem 'letter_opener', :group => :development
+gem 'draper', '~> 3.0.0.pre1'
+gem 'kaminari'
+gem 'rails-observers', github: 'rails/rails-observers'
+
+gem 'sidekiq'

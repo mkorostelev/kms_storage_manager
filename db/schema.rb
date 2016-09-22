@@ -10,7 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160921133128) do
+ActiveRecord::Schema.define(version: 20160922095255) do
+
+  create_table "items", force: :cascade do |t|
+    t.integer  "warehouse_id"
+    t.integer  "order_id"
+    t.integer  "quantity"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["order_id"], name: "index_items_on_order_id"
+    t.index ["warehouse_id"], name: "index_items_on_warehouse_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer  "product_id"
+    t.integer  "quantity",   default: 0
+    t.integer  "status",     default: 0
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.index ["product_id"], name: "index_orders_on_product_id"
+  end
 
   create_table "products", force: :cascade do |t|
     t.string   "title"
@@ -21,9 +40,9 @@ ActiveRecord::Schema.define(version: 20160921133128) do
   create_table "storage_items", force: :cascade do |t|
     t.integer  "warehouse_id"
     t.integer  "product_id"
-    t.integer  "quantity"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.integer  "quantity",     default: 0
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
     t.index ["product_id"], name: "index_storage_items_on_product_id"
     t.index ["warehouse_id"], name: "index_storage_items_on_warehouse_id"
   end
